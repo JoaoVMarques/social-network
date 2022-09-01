@@ -6,7 +6,7 @@ Um projeto de uma loja virtual, onde é possivel dar likes, comentar, adicionar 
 Tenho muitos planos futuros para esse site.
 
 ## Porque?
-Para aprimorar minhas técnicas em html, css e javascript, além de deixar esse siteno meu Portifólio.
+Para aprimorar minhas técnicas em html, css e javascript, além de deixar esse site no meu Portifólio.
 
 ## 🏆 Objetivos
 - [ ] Registro e Login de usuário
