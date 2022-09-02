@@ -18,5 +18,17 @@ Para aprimorar minhas técnicas em html, css e javascript, além de deixar esse 
 - [ ] Comentarios
 - [ ] Amigos
 
-## Ferramentas Utilizadas
-Futuras ferramentas utilizadas serão adicionadas aqui.
+## Parte Tecnica
+<details>
+  <summary><strong>🛠️ Ferramentas Utilizadas</strong></summary><br />
+
+  - [ReactJs](https://reactjs.org/) Montar o projeto
+</details>
+
+<details>
+  <summary><strong>🧰 Dependencias</strong></summary><br />
+
+  - [React Boostrap](https://react-bootstrap.github.io/) Estilizar
+  - [React Router Dom](https://reactrouter.com/en/main) Rotas
+  - [ESlint](https://eslint.org/) Linter
+</details>
