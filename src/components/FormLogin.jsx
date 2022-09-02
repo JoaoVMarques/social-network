@@ -1,37 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import UserContext from '../context/UserContext';
 
 function FormLogin() {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-  const [verifiedPass, setVerifiedPass] = useState(false);
-  const [verifiedEmail, setVerifiedEmail] = useState(false);
-  const [disableButton, setDisableButton] = useState(true);
+  const { disableButton, verifyInput } = useContext(UserContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    verifyInputs();
-  }, [verifiedPass, verifiedEmail]);
 
   function redirect(event) {
     event.preventDefault();
     navigate('/home');
-  }
-
-  function verifyInput({ target }, regex, setVerified) {
-    const { value } = target;
-    const result = value.toLowerCase().match(
-      regex
-    );
-    setVerified(result ? true : false);
-  }
-
-  function verifyInputs() {
-    console.log((verifiedPass && verifiedEmail) ? false : true);
-    setDisableButton( verifiedPass && verifiedEmail ? false : true );
   }
 
   return (
@@ -42,8 +22,9 @@ function FormLogin() {
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
+              name="email"
               placeholder="Endereço de email" 
-              onChange={ (event) => verifyInput(event, emailRegex, setVerifiedEmail) }
+              onChange={ (event) => verifyInput(event) }
             />
           </Form.Group>
         </Row>
@@ -52,8 +33,9 @@ function FormLogin() {
             <Form.Label>Senha</Form.Label>
             <Form.Control
               type="password"
+              name="password"
               placeholder="Senha"
-              onChange={ (event) => verifyInput(event, passwordRegex, setVerifiedPass) }
+              onChange={ (event) => verifyInput(event) }
             />
           </Form.Group>
         </Row>
