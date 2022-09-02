@@ -9,11 +9,11 @@ Tenho muitos planos futuros para esse site.
 Para aprimorar minhas técnicas em html, css e javascript, além de deixar esse site no meu Portifólio.
 
 ## 🏆 Objetivos
+- [x] ~Bootstrap para estilizar a página~
 - [ ] Registro e Login de usuário
-- [ ] Pagina de inicial
+- [ ] Pagina inicial
 - [ ] Sistema de fazer postagens
 - [ ] Header com botão de deslogar
-- [ ] Bootstrap para estilizar a página
 - [ ] Curtidas
 - [ ] Comentarios
 - [ ] Amigos
