@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import UserContext from '../context/UserContext';
+import Register from './Modals/Register';
 
 function FormLogin() {
+  const [show, setShow] = useState(false);
   const { disableButton, verifyInput } = useContext(UserContext);
   const navigate = useNavigate();
+  const handleShow = () => setShow(true);
 
   function redirect(event) {
     event.preventDefault();
@@ -15,10 +18,10 @@ function FormLogin() {
   }
 
   return (
-    <Form className="">
+    <Form>
       <Container>
         <Row>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -29,7 +32,7 @@ function FormLogin() {
           </Form.Group>
         </Row>
         <Row>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Senha</Form.Label>
             <Form.Control
               type="password"
@@ -50,8 +53,14 @@ function FormLogin() {
             Entrar
           </Button>
         </Row>
+        <hr />
+        <Row className="d-flex justify-content-center">
+          <Button className="btn btn-success w-50" onClick={ handleShow }>
+            Criar conta
+          </Button>
+        </Row>
       </Container>
-      <hr />
+      <Register show={ show } setShow={ setShow } />
     </Form>
   );
 }

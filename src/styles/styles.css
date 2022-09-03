@@ -2,3 +2,7 @@
   width: 100vw;
   height: 100vh;
 }
+
+.pd-2 {
+  padding: 2px !important;
+}
