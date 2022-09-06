@@ -22,7 +22,7 @@ function FormRegister() {
     }
   }
 
-  function validateFom() {
+  function validateForm() {
     const { email, user, password } = form;
     const newErrors = {};
 
@@ -45,7 +45,7 @@ function FormRegister() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const formErros = validateFom();
+    const formErros = validateForm();
     if(Object.keys(formErros).length > 0) {
       setErrors(formErros);
     }

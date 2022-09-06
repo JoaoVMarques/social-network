@@ -3,18 +3,50 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import UserContext from '../context/UserContext';
 import Register from './Modals/Register';
+import UserContext from '../context/UserContext';
 
 function FormLogin() {
   const [show, setShow] = useState(false);
-  const { disableButton, verifyInput } = useContext(UserContext);
+  const [form, setForm] = useState({});
+  const [loginError, setLoginError] = useState(false);
+  const { registerInputValidade } = useContext(UserContext);
   const navigate = useNavigate();
   const handleShow = () => setShow(true);
 
-  function redirect(event) {
-    event.preventDefault();
+  function redirect() {
     navigate('/home');
+  }
+
+  function setField(field, value) {
+    setForm({
+      ...form,
+      [field]: value,
+    });
+  }
+
+  function validateForm() {
+    const { email, password } = form;
+    const newErrors = {};
+
+    const emailError = registerInputValidade('email', email) ? false : true;
+    const passwordError = registerInputValidade('password', password) ? false : true;
+    console.log(`Email: ${emailError}`);
+    console.log(`Senha: ${passwordError}`);
+    console.log(emailError && passwordError);
+
+    if(emailError && passwordError) {
+      setLoginError(false);
+      redirect();
+    } else {
+      setLoginError(true);
+    }
+    return newErrors;
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    validateForm();
   }
 
   return (
@@ -27,8 +59,12 @@ function FormLogin() {
               type="email"
               name="email"
               placeholder="Endereço de email" 
-              onChange={ (event) => verifyInput(event) }
+              onChange={ ({target}) => setField('email', target.value) }
+              isInvalid={ loginError }
             />
+            <Form.Control.Feedback type="invalid">
+              { loginError && 'Email Ou senha invalidos' }
+            </Form.Control.Feedback>
           </Form.Group>
         </Row>
         <Row>
@@ -38,7 +74,8 @@ function FormLogin() {
               type="password"
               name="password"
               placeholder="Senha"
-              onChange={ (event) => verifyInput(event) }
+              isInvalid={ loginError }
+              onChange={ ({target}) => setField('password', target.value) }
             />
           </Form.Group>
         </Row>
@@ -46,9 +83,8 @@ function FormLogin() {
           <Button
             className="w-50"
             variant="primary"
-            disabled={ disableButton }
             type="submit"
-            onClick={ (event) => redirect(event) }
+            onClick={ (event) => handleSubmit(event) }
           >
             Entrar
           </Button>
