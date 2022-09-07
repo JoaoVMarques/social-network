@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import UserContext from '../context/UserContext';
+import { saveAccount } from '../utils/LocalStorage';
 
 function FormRegister() {
   const [form, setForm] = useState({});
@@ -23,18 +24,18 @@ function FormRegister() {
   }
 
   function validateForm() {
-    const { email, user, password } = form;
+    const { email, username, password } = form;
     const newErrors = {};
 
     const emailError = registerInputValidade('email', email);
-    const userError = registerInputValidade('user', user);
+    const userNameError = registerInputValidade('username', username);
     const passwordError = registerInputValidade('password', password);
 
     if(emailError) {
       newErrors.email = emailError;
     }
-    if(userError) {
-      newErrors.user = userError;
+    if(userNameError) {
+      newErrors.username = userNameError;
     }
     if(passwordError) {
       newErrors.password = passwordError;
@@ -48,6 +49,8 @@ function FormRegister() {
     const formErros = validateForm();
     if(Object.keys(formErros).length > 0) {
       setErrors(formErros);
+    } else {
+      saveAccount(form);
     }
   }
 
@@ -79,12 +82,12 @@ function FormRegister() {
                 type="text"
                 placeholder='nomeDeUsuario'
                 autoFocus
-                onChange={ ({target}) => setField('user', target.value) }
-                isInvalid={ !!errors.user }
+                onChange={ ({target}) => setField('username', target.value) }
+                isInvalid={ !!errors.username }
                 required
               />
               <Form.Control.Feedback type="invalid">
-                { errors.user }
+                { errors.username }
               </Form.Control.Feedback>
             </Form.Group>
           </Col>

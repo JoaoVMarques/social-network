@@ -38,7 +38,7 @@ function Provider({ children }) {
   function registerInputValidade(name, value) {
     if (name === 'email') {
       return registerEmail(value);
-    } else if (name === 'user') {
+    } else if (name === 'username') {
       return registerUser(value);
     } else if (name === 'password') {
       return registerPassword(value);

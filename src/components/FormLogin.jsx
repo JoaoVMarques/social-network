@@ -31,9 +31,6 @@ function FormLogin() {
 
     const emailError = registerInputValidade('email', email) ? false : true;
     const passwordError = registerInputValidade('password', password) ? false : true;
-    console.log(`Email: ${emailError}`);
-    console.log(`Senha: ${passwordError}`);
-    console.log(emailError && passwordError);
 
     if(emailError && passwordError) {
       setLoginError(false);
