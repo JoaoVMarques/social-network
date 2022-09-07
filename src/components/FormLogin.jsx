@@ -10,7 +10,7 @@ function FormLogin() {
   const [show, setShow] = useState(false);
   const [form, setForm] = useState({});
   const [loginError, setLoginError] = useState(false);
-  const { registerInputValidade } = useContext(UserContext);
+  const { loginInputValidate } = useContext(UserContext);
   const navigate = useNavigate();
   const handleShow = () => setShow(true);
 
@@ -29,10 +29,9 @@ function FormLogin() {
     const { email, password } = form;
     const newErrors = {};
 
-    const emailError = registerInputValidade('email', email) ? false : true;
-    const passwordError = registerInputValidade('password', password) ? false : true;
+    const emailAndPassword = loginInputValidate(email, password) ? false : true;
 
-    if(emailError && passwordError) {
+    if(emailAndPassword) {
       setLoginError(false);
       redirect();
     } else {

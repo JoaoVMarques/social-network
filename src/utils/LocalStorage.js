@@ -9,3 +9,13 @@ export function saveAccount(accountObject) {
     localStorage.setItem(name, [savedStorage]);
   }
 }
+
+export function loadingAccount() {
+  const name = 'accounts';
+  const localStorageAccounts = JSON.parse(localStorage.getItem(name));
+  if(localStorageAccounts) {
+    return localStorageAccounts;
+  } else {
+    return [];
+  }
+}

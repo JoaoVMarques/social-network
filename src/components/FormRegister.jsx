@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import UserContext from '../context/UserContext';
 import { saveAccount } from '../utils/LocalStorage';
 
-function FormRegister() {
+function FormRegister(props) {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
-  const { registerInputValidade } = useContext(UserContext);
+  const { registerInputValidate } = useContext(UserContext);
 
   function setField(field, value) {
     setForm({
@@ -27,9 +28,9 @@ function FormRegister() {
     const { email, username, password } = form;
     const newErrors = {};
 
-    const emailError = registerInputValidade('email', email);
-    const userNameError = registerInputValidade('username', username);
-    const passwordError = registerInputValidade('password', password);
+    const emailError = registerInputValidate('email', email);
+    const userNameError = registerInputValidate('username', username);
+    const passwordError = registerInputValidate('password', password);
 
     if(emailError) {
       newErrors.email = emailError;
@@ -46,11 +47,13 @@ function FormRegister() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const { handleClose } = props;
     const formErros = validateForm();
     if(Object.keys(formErros).length > 0) {
       setErrors(formErros);
     } else {
       saveAccount(form);
+      handleClose();
     }
   }
 
@@ -119,5 +122,9 @@ function FormRegister() {
     </Form>
   );
 }
+
+FormRegister.propTypes = {
+  handleClose: PropTypes.func,
+}.isRequired;
 
 export default FormRegister;

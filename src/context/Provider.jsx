@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UserContext from './UserContext';
+import { loadingAccount } from '../utils/LocalStorage';
 
 function Provider({ children }) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,7 +36,7 @@ function Provider({ children }) {
     return 'Insira uma senha.';
   }
 
-  function registerInputValidade(name, value) {
+  function registerInputValidate(name, value) {
     if (name === 'email') {
       return registerEmail(value);
     } else if (name === 'username') {
@@ -45,8 +46,22 @@ function Provider({ children }) {
     }
   }
 
+  function validateCredential(email, password) {
+    const accountsList = loadingAccount();
+    return (accountsList.find((account) => account.email === email 
+    && account.password === password)) !== undefined ? false : true;
+  }
+
+  function loginInputValidate(email, password) {
+    if(password && password) {
+      return validateCredential(email, password);
+    }
+    return true;
+  }
+
   const contextValue = {
-    registerInputValidade,
+    registerInputValidate,
+    loginInputValidate,
   };
 
   return (

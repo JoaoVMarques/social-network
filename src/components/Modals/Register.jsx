@@ -12,7 +12,7 @@ function Register(props) {
         <Modal.Title>Registrar-se</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <FormRegister />
+        <FormRegister handleClose={ handleClose } />
       </Modal.Body>
     </Modal>
   );
