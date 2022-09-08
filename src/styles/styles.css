@@ -6,3 +6,13 @@
 .pd-2 {
   padding: 2px !important;
 }
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: black;
+}
+
+.selected {
+  color: #007bff
+}

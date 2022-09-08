@@ -1,10 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
+import MainContent from '../components/MainContent';
 
 function Home() {
   return(
-    <h1>
-      Home
-    </h1>
+    <>
+      <Header pageName={ 'Página Inicial' } />
+      <MainContent />
+    </>
   );
 }
 
