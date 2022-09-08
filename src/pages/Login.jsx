@@ -8,10 +8,10 @@ function Login() {
     <div className="d-flex bg-light main-page">
       <Container className="d-flex align-items-center">
         <Row>
-          <Col className="px-5" xs={ 12 } md={ 6 }>
+          <Col className="px-5" md={ 6 }>
             <LoginTitle />
           </Col>
-          <Col className="bg-white py-3 rounded shadow border-left" xs={ 12 } md={ 6 }>
+          <Col className="bg-white py-3 rounded shadow border-left" md={ 6 }>
             <FormLogin />
           </Col>
         </Row>

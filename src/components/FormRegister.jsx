@@ -66,6 +66,7 @@ function FormRegister(props) {
               <Form.Control
                 type="email"
                 name="email"
+                autoFocus
                 placeholder="Endereço de email" 
                 onChange={ ({target}) => setField('email', target.value) }
                 isInvalid={ !!errors.email }
@@ -84,7 +85,6 @@ function FormRegister(props) {
                 className='mb-2'
                 type="text"
                 placeholder='nomeDeUsuario'
-                autoFocus
                 onChange={ ({target}) => setField('username', target.value) }
                 isInvalid={ !!errors.username }
                 required

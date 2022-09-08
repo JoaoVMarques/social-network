@@ -19,6 +19,7 @@ function FormLogin() {
   }
 
   function setField(field, value) {
+    setLoginError(false);
     setForm({
       ...form,
       [field]: value,
@@ -49,7 +50,7 @@ function FormLogin() {
     <Form>
       <Container>
         <Row>
-          <Form.Group className="mb-3" controlId="formEmail">
+          <Form.Group className="mb-3 position-relative" controlId="formEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -58,12 +59,10 @@ function FormLogin() {
               onChange={ ({target}) => setField('email', target.value) }
               isInvalid={ loginError }
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback tooltip type="invalid">
               { loginError && 'Email Ou senha invalidos' }
             </Form.Control.Feedback>
           </Form.Group>
-        </Row>
-        <Row>
           <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Senha</Form.Label>
             <Form.Control

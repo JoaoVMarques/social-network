@@ -30,7 +30,7 @@ function Provider({ children }) {
         passwordRegex
       );
       return result ? false 
-        : 'A senha precisa ter no minimo 8 caracteres e no minimo 1 letra e 1 número';
+        : 'A senha precisa ter no minimo 8 caracteres, 1 letra e 1 número';
 
     }
     return 'Insira uma senha.';
