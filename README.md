@@ -10,7 +10,7 @@ Para aprimorar minhas técnicas em html, css e javascript, além de deixar esse 
 
 ## 🏆 Objetivos
 - [x] ~Bootstrap para estilizar a página~
-- [ ] Registro e Login de usuário
+- [x] Registro e Login de usuário
 - [ ] Pagina inicial
 - [ ] Sistema de fazer postagens
 - [ ] Header com botão de deslogar
