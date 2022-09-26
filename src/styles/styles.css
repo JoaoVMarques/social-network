@@ -16,3 +16,7 @@
 .selected {
   color: #007bff
 }
+
+.notresize {
+  resize: none;
+}
