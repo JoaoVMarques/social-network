@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import UserContext from '../context/UserContext';
+import UserContext from '../hooks/context/UserContext';
 import { saveAccount } from '../utils/LocalStorage';
 
 function FormRegister(props) {

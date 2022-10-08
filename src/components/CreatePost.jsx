@@ -8,7 +8,6 @@ function CreatePost(props) {
     <Form>
       <div className="form-group">
         <textarea
-
           className="form-control notresize"
           id="postTextArea"
           onChange={ verifyPublishButton }
