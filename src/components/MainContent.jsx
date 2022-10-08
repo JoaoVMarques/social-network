@@ -1,12 +1,13 @@
-import React from 'react';
-import contents from '../data/content';
+import React, { useContext } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ContentCard from './ContentCard';
 import CreatePost from './CreatePost';
 import { useState } from 'react';
+import DataContext from '../hooks/data/DataContext';
 
 function MainContent() {
   const marginNumber = 3;
+  const { usersContents } = useContext(DataContext);
   const [ publishButton, setPublishButton ] = useState(false);
   const [ marginBottom, setMarginBottom ] = useState(marginNumber);
 
@@ -40,7 +41,7 @@ function MainContent() {
           )
         }
         <Row>
-          {contents.map((content) => 
+          {usersContents.map((content) => 
             (
               <ContentCard
                 key={ content.id }

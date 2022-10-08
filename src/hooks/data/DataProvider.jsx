@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DataContext from './DataContext';
+import usersContents from '../../data/content';
 
 function DataProvider({ children }) {
 
   const contextValue = {
-
+    usersContents
   };
 
   return (
