@@ -7,13 +7,15 @@ import DataContext from '../hooks/data/DataContext';
 
 function MainContent() {
   const marginNumber = 3;
-  const { usersContents } = useContext(DataContext);
+  const { usersContents, publishContent } = useContext(DataContext);
+  const [ publishText, setPublishText ] = useState('');
   const [ publishButton, setPublishButton ] = useState(false);
   const [ marginBottom, setMarginBottom ] = useState(marginNumber);
 
   function verifyPublishButton({ target }) {
     const { value } = target;
     if(value) {
+      setPublishText(value);
       setPublishButton(true);
       setMarginBottom(1);
     } else {
@@ -22,12 +24,20 @@ function MainContent() {
     }
   }
 
+  function createPost() {
+    publishContent(publishText);
+    setPublishText('');
+  }
+
   return(
     <div className="p-5">
       <Container>
         <Row className={ `mb-${marginBottom}` }>
           <Col sm={ 9 } xs={ 12 } className="mx-auto">
-            <CreatePost verifyPublishButton={ verifyPublishButton } />
+            <CreatePost
+              verifyPublishButton={ verifyPublishButton } 
+              publishText={ publishText }
+            />
           </Col>
         </Row>
         {
@@ -35,7 +45,11 @@ function MainContent() {
           (
             <Row className="mb-2">
               <Col sm={ 9 } xs={ 12 } className="mx-auto d-flex flex-row-reverse">
-                <Button variant="primary">Publicar</Button>
+                <Button
+                  variant="primary" 
+                  onClick={ createPost }
+                >Publicar
+                </Button>
               </Col>
             </Row>
           )
@@ -44,7 +58,7 @@ function MainContent() {
           {usersContents.map((content) => 
             (
               <ContentCard
-                key={ content.id }
+                key={ content.postId }
                 contentObject={ content }
               />
             ))}

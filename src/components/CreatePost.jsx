@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap';
 
 function CreatePost(props) {
-  const { verifyPublishButton } = props;
+  const { verifyPublishButton, publishText } = props;
   return(
     <Form>
       <div className="form-group">
         <textarea
+          value={ publishText }
           className="form-control notresize"
           id="postTextArea"
           onChange={ verifyPublishButton }
