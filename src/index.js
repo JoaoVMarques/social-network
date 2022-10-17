@@ -5,8 +5,8 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
-import Provider from './hooks/context/Provider';
-import DataProvider from './hooks/data/DataProvider';
+import Provider from './hooks/Providers/UserProvider';
+import DataProvider from './hooks/Providers/DataProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

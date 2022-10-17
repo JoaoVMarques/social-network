@@ -3,7 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import ContentCard from './ContentCard';
 import CreatePost from './CreatePost';
 import { useState } from 'react';
-import DataContext from '../hooks/data/DataContext';
+import DataContext from '../hooks/context/DataContext';
 
 function MainContent() {
   const marginNumber = 3;

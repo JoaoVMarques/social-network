@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import UserContext from './UserContext';
+import UserContext from '../context/UserContext';
 import { loadingAccount } from '../../utils/LocalStorage';
 
 function Provider({ children }) {

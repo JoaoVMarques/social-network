@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataContext from './DataContext';
+import DataContext from '../context/DataContext';
 import dataContents from '../../data/content';
 import { useState } from 'react';
 
