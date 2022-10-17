@@ -79,10 +79,9 @@ function FormRegister(props) {
           </Col>
         </Row>
         <Row>
-          <Col className='pd-2'>
-            <Form.Group className="mb-2" controlId="formUser">
+          <Col className='pd-2 mb-3'>
+            <Form.Group controlId="formUser">
               <Form.Control
-                className='mb-2'
                 type="text"
                 placeholder='nomeDeUsuario'
                 onChange={ ({target}) => setField('username', target.value) }
@@ -94,8 +93,8 @@ function FormRegister(props) {
               </Form.Control.Feedback>
             </Form.Group>
           </Col>
-          <Col className='pd-2'>
-            <Form.Group className="mb-3" controlId="formPassword">
+          <Col className='pd-2 mb-3'>
+            <Form.Group controlId="formPassword">
               <Form.Control
                 type="password"
                 name="password"
