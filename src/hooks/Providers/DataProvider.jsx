@@ -1,11 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DataContext from '../context/DataContext';
-import dataContents from '../../data/content';
 import { useState } from 'react';
+import { getPosts } from '../../services/fetchPosts';
+import { useEffect } from 'react';
 
 function DataProvider({ children }) {
-  const [ usersContents, setUsersContents ] = useState(dataContents);
+  const [ usersContents, setUsersContents ] = useState([]);
+
+  const fetchPosts = async () => {  
+    const contents = await getPosts();
+    setUsersContents(contents.message);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  
 
   function publishContent(textToPublish) {  
     const createdPost = {
