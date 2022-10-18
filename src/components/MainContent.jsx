@@ -15,12 +15,11 @@ function MainContent() {
   function verifyPublishButton({ target }) {
     const { value } = target;
     if(value) {
-      setPublishButton(true);
       setMarginBottom(1);
     } else {
-      setPublishButton(false);
       setMarginBottom(marginNumber);
     }
+    setPublishButton(value);
     setPublishText(value);
   }
 
