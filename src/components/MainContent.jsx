@@ -15,13 +15,13 @@ function MainContent() {
   function verifyPublishButton({ target }) {
     const { value } = target;
     if(value) {
-      setPublishText(value);
       setPublishButton(true);
       setMarginBottom(1);
     } else {
       setPublishButton(false);
       setMarginBottom(marginNumber);
     }
+    setPublishText(value);
   }
 
   function createPost() {
