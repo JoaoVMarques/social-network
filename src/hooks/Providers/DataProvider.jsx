@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataContext from '../context/DataContext';
 import { useState } from 'react';
-import { getPosts } from '../../services/fetchPosts';
+import { getPosts, publishPosts } from '../../services/fetchPosts';
 import { useEffect } from 'react';
 
 function DataProvider({ children }) {
   const [ usersContents, setUsersContents ] = useState([]);
+  const [ refresh, setRefresh ] = useState(false);
 
   const fetchPosts = async () => {  
     const contents = await getPosts();
@@ -15,19 +16,16 @@ function DataProvider({ children }) {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+    setRefresh(false);
+  }, [refresh]);
   
 
-  function publishContent(textToPublish) {  
-    const createdPost = {
-      postId: usersContents.length +1,
-      user: 'mainUser',
-      content: textToPublish,
-      hour: '00:00',
-      date: '08/10/2022'
+  async function publishContent(textToPublish) {
+    const publishObject = {
+      message: textToPublish
     };
-    const newContent = [createdPost, ...usersContents];
-    setUsersContents(newContent);
+    await publishPosts(publishObject);
+    setRefresh(true);
   }
 
   const contextValue = {

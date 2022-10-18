@@ -6,3 +6,16 @@ export const getPosts = async () => {
   const response = await request.json();
   return response;
 };
+
+export const publishPosts = async (post) => {
+  console.log(post);
+  const endpoint = `${HOST}/posts`;
+  const request = await fetch(endpoint,
+    { method: 'POST',
+      body: JSON.stringify(post),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+      }});
+  const response = await request.json();
+  return response;
+};
