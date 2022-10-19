@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UserContext from '../context/UserContext';
-import { loadingAccount } from '../../utils/LocalStorage';
 
 function Provider({ children }) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,15 +45,9 @@ function Provider({ children }) {
     }
   }
 
-  function validateCredential(email, password) {
-    const accountsList = loadingAccount();
-    return (accountsList.find((account) => account.email === email 
-    && account.password === password)) !== undefined ? false : true;
-  }
-
   function loginInputValidate(email, password) {
     if(password && password) {
-      return validateCredential(email, password);
+      
     }
     return true;
   }

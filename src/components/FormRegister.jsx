@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import UserContext from '../hooks/context/UserContext';
-import { saveAccount } from '../utils/LocalStorage';
+import { createAccount } from '../services/fetchAccount';
 
 function FormRegister(props) {
   const [form, setForm] = useState({});
@@ -52,7 +52,7 @@ function FormRegister(props) {
     if(Object.keys(formErros).length > 0) {
       setErrors(formErros);
     } else {
-      saveAccount(form);
+      createAccount(form);
       handleClose();
     }
   }
@@ -112,7 +112,7 @@ function FormRegister(props) {
             type="submit"
             variant="primary"
             className="btn btn-success"
-            onClick={ (event) => handleSubmit(event) }
+            onClick={ handleSubmit }
           >
             Cadastrar-se
           </Button>
