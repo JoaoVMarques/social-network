@@ -23,7 +23,7 @@ function MainContent() {
     setPublishText(value);
   }
 
-  function createPost() {
+  async function createPost() {
     publishContent(publishText);
     setPublishText('');
   }

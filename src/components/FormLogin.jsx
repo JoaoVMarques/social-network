@@ -26,13 +26,13 @@ function FormLogin() {
     });
   }
 
-  function validateForm() {
+  async function validateForm() {
     const { email, password } = form;
     const newErrors = {};
 
-    const emailAndPassword = loginInputValidate(email, password) ? false : true;
+    const autorized = await loginInputValidate(email, password);
 
-    if(emailAndPassword) {
+    if(autorized) {
       setLoginError(false);
       redirect();
     } else {
@@ -79,7 +79,7 @@ function FormLogin() {
             className="w-50"
             variant="primary"
             type="submit"
-            onClick={ (event) => handleSubmit(event) }
+            onClick={ handleSubmit }
           >
             Entrar
           </Button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UserContext from '../context/UserContext';
+import { loginAccount } from '../../services/fetchAccount';
 
 function Provider({ children }) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,11 +46,12 @@ function Provider({ children }) {
     }
   }
 
-  function loginInputValidate(email, password) {
+  async function loginInputValidate(email, password) {
     if(password && password) {
-      
+      const test = await loginAccount({ email, password });
+      return test;
     }
-    return true;
+    return false;
   }
 
   const contextValue = {

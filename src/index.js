@@ -11,13 +11,11 @@ import DataProvider from './hooks/Providers/DataProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <Provider>
-        <DataProvider>
-          <App />
-        </DataProvider>
-      </Provider>
-    </React.StrictMode>
+    <Provider>
+      <DataProvider>
+        <App />
+      </DataProvider>
+    </Provider>
   </BrowserRouter>
 );
 

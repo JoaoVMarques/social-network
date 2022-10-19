@@ -8,7 +8,6 @@ export const getPosts = async () => {
 };
 
 export const publishPosts = async (post) => {
-  console.log(post);
   const endpoint = `${HOST}/posts`;
   const request = await fetch(endpoint,
     { method: 'POST',

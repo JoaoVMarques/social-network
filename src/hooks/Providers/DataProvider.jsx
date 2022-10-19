@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 
 function DataProvider({ children }) {
   const [ usersContents, setUsersContents ] = useState([]);
-  const [ refresh, setRefresh ] = useState(false);
 
   const fetchPosts = async () => {  
     const contents = await getPosts();
@@ -16,8 +15,7 @@ function DataProvider({ children }) {
 
   useEffect(() => {
     fetchPosts();
-    setRefresh(false);
-  }, [refresh]);
+  }, []);
   
 
   async function publishContent(textToPublish) {
@@ -25,7 +23,7 @@ function DataProvider({ children }) {
       message: textToPublish
     };
     await publishPosts(publishObject);
-    setRefresh(true);
+    await fetchPosts();
   }
 
   const contextValue = {
