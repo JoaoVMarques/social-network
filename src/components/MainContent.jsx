@@ -57,7 +57,7 @@ function MainContent() {
           {usersContents.map((content) => 
             (
               <ContentCard
-                key={ content.postId }
+                key={ content.id }
                 contentObject={ content }
               />
             ))}
