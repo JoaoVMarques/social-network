@@ -4,13 +4,13 @@ import { Card, Col } from 'react-bootstrap';
 
 function ContentCard(props) {
   const { contentObject } = props;
-  const { content, user } = contentObject;
+  const { content, username } = contentObject;
   return (
     <Col sm={ 9 } xs={ 12 } className="mx-auto">
       <Card className="mb-2">
         <Card.Body>
           <Card.Title>
-            <h6> { user } <span>· 2h</span></h6>
+            <h6> { username } <span>· 2h</span></h6>
           </Card.Title>
           <Card.Text>
             { content }
@@ -24,7 +24,7 @@ function ContentCard(props) {
 ContentCard.propTypes = {
   contentObject: PropTypes.shape({
     content: PropTypes.string,
-    user: PropTypes.string,
+    username: PropTypes.string,
   }),
 };
 
