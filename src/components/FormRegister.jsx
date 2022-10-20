@@ -4,10 +4,12 @@ import { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import UserContext from '../hooks/context/UserContext';
 import { createAccount } from '../services/fetchAccount';
+import { useNavigate } from 'react-router-dom';
 
 function FormRegister(props) {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
+  const Navigate = useNavigate();
   const { registerInputValidate } = useContext(UserContext);
 
   function setField(field, value) {
@@ -22,6 +24,10 @@ function FormRegister(props) {
         [field]: null,
       });
     }
+  }
+
+  function redirect() {
+    Navigate('/home');
   }
 
   function validateForm() {
@@ -52,6 +58,7 @@ function FormRegister(props) {
     if(Object.keys(formErros).length > 0) {
       setErrors(formErros);
     } else {
+      redirect();
       createAccount(form);
       handleClose();
     }
