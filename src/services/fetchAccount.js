@@ -1,4 +1,11 @@
+import Cookies from 'universal-cookie';
+
 const HOST = 'http://localhost:3400';
+
+const createToken = (token) => {
+  const cookies = new Cookies();
+  cookies.set('token', token, { path: '/' });
+};
 
 export const createAccount = async (account) => {
   const endpoint = `${HOST}/account`;
@@ -8,8 +15,12 @@ export const createAccount = async (account) => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8'
       }});
-  const response = await request.json();
-  return response;
+  const { error, token } = await request.json();
+  if(error) {
+    return false;
+  }
+  createToken(token);
+  return true;
 };
 
 export const loginAccount = async (loginObject) => {
@@ -20,6 +31,10 @@ export const loginAccount = async (loginObject) => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8'
       }});
-  const { error } = await request.json();
-  return error ? false : true;
+  const { error, token } = await request.json();
+  if(error) {
+    return false;
+  }
+  createToken(token);
+  return true;
 };
