@@ -2,7 +2,7 @@
 Futuramente no projeto deixarei fotos aqui 📷
 
 ## Sobre
-Um projeto de uma loja virtual, onde é possivel dar likes, comentar, adicionar amigos, entre varias outras funcionalidades
+Um projeto de rede social, onde é possivel dar likes, comentar, adicionar amigos, entre varias outras funcionalidades
 Tenho muitos planos futuros para esse site.
 
 ## Porque?
@@ -11,8 +11,8 @@ Para aprimorar minhas técnicas em html, css e javascript, além de deixar esse 
 ## 🏆 Objetivos
 - [x] ~Bootstrap para estilizar a página~
 - [x] Registro e Login de usuário
-- [ ] Pagina inicial
-- [ ] Sistema de fazer postagens
+- [x] Pagina inicial
+- [x] Sistema de fazer postagens
 - [ ] Header com botão de deslogar
 - [ ] Curtidas
 - [ ] Comentarios
